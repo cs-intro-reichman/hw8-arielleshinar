@@ -88,7 +88,7 @@
     public boolean removeFollowee(String name) {
       // Loop through the follows list to find the name
     for (int i = 0; i < fCount; i++) {
-        if (this.follows[i].equals(name)) {
+        if (this.follows[i].equalsIgnoreCase(name)) {
             // Shift elements after i to the left by one position
             for (int j = i; j < fCount - 1; j++) {
                 this.follows[j] = this.follows[j + 1]; // Move the next element to the current position
@@ -113,7 +113,7 @@
          for(int i = 0; i < this.fCount; i++){
             String currentName = this.follows[i];
             for (int j = 0; j < other.fCount; j++){
-                if(currentName.equals(other.follows[j])){
+                if(currentName.equalsIgnoreCase(other.follows[j])){
                     counter++;
                 }
             }

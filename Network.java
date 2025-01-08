@@ -88,7 +88,7 @@ public class Network {
 
     //find name1 and add name2 as a followee
     for (int i = 0; i < this.userCount; i++) {
-        if (users[i].getName().equals(name1)) {
+        if (users[i].getName().equalsIgnoreCase(name1)) {
             if (users[i].follows(name2)) {
                 return false; // User1 is already following User2
             }
@@ -111,14 +111,14 @@ public class Network {
         
         // Find the User object for the given name
         for (int i = 0; i < userCount; i++) {
-            if (users[i].getName().equals(name)) {
+            if (users[i].getName().equalsIgnoreCase(name)) {
                 user1 = users[i]; // Found the user with the given name
                 break;
             }   
         }
 
         for (int i = 0; i < userCount; i++){
-            if (users[i].getName().equals(name)) {
+            if (users[i].getName().equalsIgnoreCase(name)) {
                 continue;
             }
 
