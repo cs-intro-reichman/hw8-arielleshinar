@@ -61,45 +61,19 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-         // Ensure both users exist in the network
-         boolean user1Exists = false;
-         boolean user2Exists = false;
        
-    
-    for (int i = 0; i < this.userCount; i++) {
-        if (users[i].getName().equalsIgnoreCase(name1)) {
-            user1Exists = true;
-        }
-        if (users[i].getName().equalsIgnoreCase(name2)) {
-            user2Exists = true;
-        }
-        
-        // If both users are found, no need to continue checking
-        if (user1Exists && user2Exists) {
-            break;
-        }
-    }
-
-    // If either user does not exist, return false
-    if (!user1Exists || !user2Exists) {
+    if (name1 == null || name2 == null || getUser(name1) == null || getUser(name2) == null || name1.equalsIgnoreCase(name2)){
         return false;
     }
 
-    //find name1 and add name2 as a followee
-    for (int i = 0; i < this.userCount; i++) {
-        if (users[i].getName().equalsIgnoreCase(name1)) {
-            if (users[i].follows(name2)) {
-                return false; // User1 is already following User2
-            }
-            users[i].addFollowee(name2);
-            return true; // added followee
-        }
+    if(getUser(name1).follows(name2)){
+        return false;
     }
 
-    // If we reached here, something went wrong
-    return false;
+    getUser(name1).addFollowee(name2);
+    return true;
+
     }
-    
     
     /** For the user with the given name, recommends another user to follow. The recommended user is
      *  the user that has the maximal mutual number of followees as the user with the given name. */
