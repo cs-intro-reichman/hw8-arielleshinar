@@ -43,21 +43,19 @@ public class Network {
     *  If the given name is already a user in this network, does nothing and returns false;
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
-        if(this.userCount != this.users.length){
-
-            for(int i = 0; i < this.userCount; i++){
-                if (this.users[i].getName().equals(name)){
-                    return false;
-                }
-                if (i == this.userCount-1){
-                    users[i+1] = new User(name);
-                    userCount++;
-                    return true; 
-                }
-
-            }
+        if(this.userCount == this.users.length){
+            return false;
         }
-        return false;
+            System.out.println("hi3");
+
+        if (this.getUser(name) != null){
+            return false;
+        }
+
+        User user1 = new User(name);
+        this.users[userCount] = user1;
+        userCount++;
+        return true;
     }
 
     /** Makes the user with name1 follow the user with name2. If successful, returns true.
@@ -67,6 +65,7 @@ public class Network {
          // Ensure both users exist in the network
          boolean user1Exists = false;
          boolean user2Exists = false;
+         System.out.println("hi");
     
     for (int i = 0; i < this.userCount; i++) {
         if (users[i].getName().equals(name1)) {
@@ -185,20 +184,11 @@ public class Network {
 
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() {
-        String ans = ""; 
-    
-        for (int i = 0; i < userCount; i++) {
-            String[] followees = users[i].getfFollows();  // Get the list of followees for the current user
-            ans += users[i].getName() + " -> ";  // Append the user's name and "->" symbol
-    
-            // Append each followee to the string
-            for (int j = 0; j < users[i].getfCount(); j++) {
-                ans += followees[j] + " ";  // Add a followee's name followed by a space
-            }
-    
-            ans += ". ";  // End this user's entry with a period and space
-        }
-        
-        return ans; 
+       String ans = "Network:";
+       for (int i = 0 ; i < userCount; i++){
+        ans = ans + "\n" + users[i];
+       }
+       return ans;
     }
+
 }
