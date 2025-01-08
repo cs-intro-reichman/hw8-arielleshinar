@@ -46,7 +46,7 @@
         //// Replace the following statement with your code
         
       for(int i = 0; i < this.fCount; i++){
-        if (this.follows[i].equals(name)){
+        if (this.follows[i].equalsIgnoreCase(name)){
             return true;
         }
       }
