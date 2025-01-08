@@ -46,8 +46,7 @@ public class Network {
         if(this.userCount == this.users.length){
             return false;
         }
-            System.out.println("hi3");
-
+         
         if (this.getUser(name) != null){
             return false;
         }
@@ -65,7 +64,7 @@ public class Network {
          // Ensure both users exist in the network
          boolean user1Exists = false;
          boolean user2Exists = false;
-         System.out.println("hi");
+       
     
     for (int i = 0; i < this.userCount; i++) {
         if (users[i].getName().equalsIgnoreCase(name1)) {
