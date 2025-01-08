@@ -68,10 +68,10 @@ public class Network {
          System.out.println("hi");
     
     for (int i = 0; i < this.userCount; i++) {
-        if (users[i].getName().equals(name1)) {
+        if (users[i].getName().equalsIgnoreCase(name1)) {
             user1Exists = true;
         }
-        if (users[i].getName().equals(name2)) {
+        if (users[i].getName().equalsIgnoreCase(name2)) {
             user2Exists = true;
         }
         

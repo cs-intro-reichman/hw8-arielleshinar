@@ -66,7 +66,7 @@
                 return true;
             }else{
             for(int i =0; i<fCount; i++){
-                if(follows[i].equals(name)){
+                if(follows[i].equalsIgnoreCase(name)){
                     return false;
                 }
                 //if you reached the last name and it doesnt exist add the name to the array and add 1 to the counter
